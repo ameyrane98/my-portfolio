@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ece7e0;
+  width: 960px;
+  overflow-x: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #363333;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.navbar a {
+  color: #bdbbb6;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #232730;
+  border-radius: 2px;
+  color: #ece7e0;
+}
+
+.navbar a.active {
+  border-radius: 10px;
+  background-color: #bdbbb6;
+  color: #363333;
+}
+
+.wrapper {
+  display: flex;
+  width: 400vw;
+  height: 100vh;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  scroll-snap-align: start;
+  padding: 2rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #292e37;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bdbbb6;
+  border-radius: 20px;
+  border: 3px solid #292e37;
+}
+#about {
+  background-color: #bdbbb6;
+}
+
+#workSection {
+  background-color: #bdbbb6;
+  color: #363333;
+}
+
+#projectsSection {
+  background-color: #bdbbb6;
+  color: #363333;
+}
+
+#contactMeSection {
+  background-color: #bdbbb6;
+  color: #363333;
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  padding: 5rem;
+}
+
+.profile-photo {
+  width: 450px;
+  height: auto;
+  border-radius: 60%;
+}
+
+.profile-content {
+  max-width: 600px;
+  border: 3rem;
+}
+
+.profile-content h1 {
+  font-size: 3rem;
+  color: #333;
+  border: 3rem;
+}
+
+.profile-content p {
+  line-height: 1.6;
+  color: #474545;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+
+.profile-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #232730;
+  color: #ece7e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0; /* Start with the button hidden */
+  animation: fadeIn 2s ease-in forwards; /* 2-second fade-in */
+  animation-delay: 2s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.profile-button:hover {
+  background-color: #292e37;
+}
+
+#animatedText::after {
+  content: "|";
+  animation: blink 0.7s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Css for work section*/
+#workSection {
+  background-color: #bdbbb6;
+  color: #363333;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.work-experiences {
+  display: flex;
+  gap: 1rem;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  scroll-snap-type: x mandatory;
+  padding: 1rem;
+  height: 100%;
+}
+
+.experience-card {
+  flex: 0 0 100vw; /* Full viewport width for each card */
+  background-color: #ece7e0;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+}
+
+.experience-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.company-logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.experience-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Hide scrollbar */
+.work-experiences::-webkit-scrollbar {
+  display: none;
+}
+.work-experiences {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Css for work section*/

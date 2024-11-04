@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizontal Scrolling Website</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <a href="#about" class="active">About Me</a>
+      <a href="#workSection">Work</a>
+      <a href="#projectsSection">Projects</a>
+      <a href="#contactMeSection">Contact Me </a>
+    </div>
+
+    <!-- Horizontal Scroll Wrapper -->
+    <div class="wrapper">
+      <section class="section" id="about">
+        <div class="profile-container">
+          <div class="profile-content">
+            <p>Hello! I am <b>Amey</b>, a <span id="animatedText"></span></p>
+            <a
+              href="#contactMeSection"
+              class="profile-button"
+              onclick="document.querySelector('#contactMeSection').scrollIntoView({behavior: 'smooth'});"
+              >Contact me</a
+            >
+          </div>
+          <img src="profile.jpg" alt="Profile Photo" class="profile-photo" />
+        </div>
+      </section>
+      <section class="section" id="workSection">
+        <div class="work-experiences">
+          <div class="experience-card">
+            <h2>
+              <img
+                src="abbott-logo.png"
+                alt="Abbott Laboratories Logo"
+                class="company-logo"
+              />
+              Abbott Laboratories, <span>Software Engineering Intern</span>,
+              Alameda, CA
+            </h2>
+            <p><strong>MAY 2023 - AUG 2023</strong></p>
+            <p>
+              <strong>Skills:</strong> Scripting | UI Automation | Debugging |
+              <strong>Java</strong> | <strong>Python</strong> |
+              <strong>Appium</strong> | Bitbucket | <strong>CI/CD/CT</strong> |
+              <strong>Cucumber</strong> | <strong>Gherkin</strong> <br /><br />
+              ● Developed software to automate user actions on Android and iOS
+              app for Abbott’s CGM (glucose monitoring) products.
+              <br /><br />Contributed to a
+              <strong>20% reduction in software defects</strong> and a
+              <strong>9% increase in user experience</strong>. <br /><br />
+              ● Collaborated with XFN teams, including developers, product
+              managers, and quality assurance engineers, to identify
+              requirements,<br /><br />
+              discuss and align on software design, and to rollout changes into
+              production within project timelines. <br /><br />
+              ● Developed software in <strong>Java</strong> and
+              <strong>Gherkin</strong> to interface with the native app. Created
+              extensive documentation to ensure the rest of the team
+              <br /><br />could use and extend the software.
+            </p>
+          </div>
+          <div class="experience-card">
+            <h2>
+              <img
+                src="technowin_it_infra_pvt_ltd_logo.jpeg"
+                alt="technowin_it_infra_pvt_ltd_logo"
+                class="company-logo"
+              />
+              TechnoWin IT Infra Pvt Ltd,
+              <span>0 to 1 Software Builder</span>, Mumbai, Maharashtra, India
+            </h2>
+            <p><strong>OCT 2021 – MAY 2022</strong></p>
+            <p>
+              <strong>Skills:</strong> <strong>Laravel</strong> | .NET |
+              <strong>C#</strong> | <strong>Java</strong> |
+              <strong>React.js</strong> | JavaScript | Ajax | PHP | MySQL |
+              Azure | HTML5 | CSS | MVC | Spring Boot <br /><br />
+              ● As a Software Engineer in an early-stage startup, I spearheaded
+              development, testing, go-to-market, and after-sales support of web
+              apps and <br /><br />solutions for government and educational
+              institutions. <br /><br />
+              ● Developed Full Stack software, managed software deployment to
+              production, and handled database deployments for websites and apps
+              with <br /><br /><strong>5000+ users</strong>. Products were built
+              with <strong>React</strong>, <strong>.NET</strong>,
+              <strong>PHP</strong>, and <strong>Laravel</strong>. <br /><br />
+              ● Provided technical support and triaged issues for customers for
+              all the software built.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="projectsSection">
+        <h1>Projects</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          semper nulla eget libero rhoncus ullamcorper. Duis pulvinar nisl eu
+          libero pretium, vitae volutpat tortor sodales. Maecenas ac enim quis
+          velit pellentesque interdum. Duis at neque ac ex condimentum interdum
+          nec vitae nibh. Ut viverra efficitur ullamcorper. Maecenas tempor leo
+          eu ultrices viverra. Etiam a nisl congue, tempus enim quis, tincidunt
+          est. Proin sodales diam eget nunc venenatis, vestibulum aliquam ipsum
+          cursus. Nunc iaculis interdum interdum. Sed pretium eros risus, sed
+          consequat mi iaculis ut. Phasellus lobortis a ex vel auctor. Maecenas
+          nec nibh tincidunt, auctor ex vitae, accumsan dolor. Mauris vitae
+          porttitor tellus, eget convallis nunc. Duis pulvinar libero vel nunc
+          dignissim varius. Curabitur ut velit quis massa fermentum vestibulum.
+          Integer at magna sed ex posuere dictum eget vitae mauris. Vivamus eu
+          nunc feugiat ipsum porta cursus. Nulla sit amet ullamcorper libero,
+          sed laoreet nisi. Praesent et enim ut leo faucibus consequat vitae sit
+          amet justo. Sed eget consectetur erat. Nullam in est imperdiet,
+          ultricies nibh at, venenatis neque. Duis sagittis purus neque, ut
+          convallis lacus rutrum nec. Interdum et malesuada fames ac ante ipsum
+          primis in faucibus. Pellentesque habitant morbi tristique senectus et
+          netus et malesuada fames ac turpis egestas. Donec congue est eget
+          ullamcorper ultrices. Aliquam maximus mollis orci id fermentum. Ut
+          lacus augue, condimentum sed mauris non, dignissim malesuada orci. Nam
+          ac orci fermentum, ultricies magna non, aliquam nisl. Mauris egestas
+          nibh lacus, sed sagittis libero faucibus et. Cras quis erat quis enim
+          mollis gravida. Nulla a cursus velit. Sed commodo, metus id faucibus
+          sagittis, lorem elit aliquet ex, eget convallis erat quam eu quam.
+          Morbi quis tortor ultrices, varius velit a, tempus urna. Sed nec
+          eleifend tortor. Vestibulum non semper sapien, consectetur viverra
+          turpis. Proin tempus ultricies pharetra. Donec sed iaculis mauris.
+          Integer euismod dictum porta.
+        </p>
+      </section>
+      <section class="section" id="contactMeSection">
+        <h1>Know More</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          semper nulla eget libero rhoncus ullamcorper. Duis pulvinar nisl eu
+          libero pretium, vitae volutpat tortor sodales. Maecenas ac enim quis
+          velit pellentesque interdum. Duis at neque ac ex condimentum interdum
+          nec vitae nibh. Ut viverra efficitur ullamcorper. Maecenas tempor leo
+          eu ultrices viverra. Etiam a nisl congue, tempus enim quis, tincidunt
+          est. Proin sodales diam eget nunc venenatis, vestibulum aliquam ipsum
+          cursus. Nunc iaculis interdum interdum. Sed pretium eros risus, sed
+          consequat mi iaculis ut. Phasellus lobortis a ex vel auctor. Maecenas
+          nec nibh tincidunt, auctor ex vitae, accumsan dolor. Mauris vitae
+          porttitor tellus, eget convallis nunc. Duis pulvinar libero vel nunc
+          dignissim varius. Curabitur ut velit quis massa fermentum vestibulum.
+          Integer at magna sed ex posuere dictum eget vitae mauris. Vivamus eu
+          nunc feugiat ipsum porta cursus. Nulla sit amet ullamcorper libero,
+          sed laoreet nisi. Praesent et enim ut leo faucibus consequat vitae sit
+          amet justo. Sed eget consectetur erat. Nullam in est imperdiet,
+          ultricies nibh at, venenatis neque. Duis sagittis purus neque, ut
+          convallis lacus rutrum nec. Interdum et malesuada fames ac ante ipsum
+          primis in faucibus. Pellentesque habitant morbi tristique senectus et
+          netus et malesuada fames ac turpis egestas. Donec congue est eget
+          ullamcorper ultrices. Aliquam maximus mollis orci id fermentum. Ut
+          lacus augue, condimentum sed mauris non, dignissim malesuada orci. Nam
+          ac orci fermentum, ultricies magna non, aliquam nisl. Mauris egestas
+          nibh lacus, sed sagittis libero faucibus et. Cras quis erat quis enim
+          mollis gravida. Nulla a cursus velit. Sed commodo, metus id faucibus
+          sagittis, lorem elit aliquet ex, eget convallis erat quam eu quam.
+          Morbi quis tortor ultrices, varius velit a, tempus urna. Sed nec
+          eleifend tortor. Vestibulum non semper sapien, consectetur viverra
+          turpis. Proin tempus ultricies pharetra. Donec sed iaculis mauris.
+          Integer euismod dictum porta.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
