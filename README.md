@@ -6,7 +6,7 @@ Welcome to my portfolio project! This website is a showcase of my journey, skill
 
 🔗 **Linkedin**: [![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/amey-santosh-rane-8b94601b0/)
 
-🔗 **GitHub**: [![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/)(https://github.com/ameyrane98?tab=repositories)
+🔗 **GitHub**: [![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/ameyrane98?tab=repositories)
 
 ---
 
