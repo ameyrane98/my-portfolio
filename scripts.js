@@ -50,12 +50,10 @@ const experiences = [
       "Gherkin",
     ],
     description: `
-      ● Developed software to automate user actions on Android and iOS app for Abbott’s CGM (glucose monitoring) products.<br><br>
-      Contributed to a <strong>20% reduction in software defects</strong> and a <strong>9% increase in user experience</strong>.<br><br>
-      ● Collaborated with XFN teams, including developers, product managers, and quality assurance engineers, to identify requirements,<br><br>
-      discuss and align on software design, and to rollout changes into production within project timelines.<br><br>
+      ● Developed software to automate user actions on Android and iOS app for Abbott’s CGM (glucose monitoring) products.<br><span style="padding-right: 1%;"></span>Contributed to a <strong>20% reduction in software defects</strong> and a <strong>9% increase in user experience</strong>.<br><br>
+      ● Collaborated with XFN teams, including developers, product managers, and quality assurance engineers, to identify requirements,<br><span style="padding-right: 1%;"></span>discuss and align on software design, and to rollout changes into production within project timelines.<br><br>
       ● Developed software in <strong>Java</strong> and <strong>Gherkin</strong> to interface with the native app.
-      Created extensive documentation to ensure the rest of the team could use and extend the software.
+      Created extensive documentation to ensure the rest of the team could<br><span style="padding-right: 1%;"></span> use and extend the software.
     `,
   },
   {
@@ -83,8 +81,8 @@ const experiences = [
     ],
     description: `
       ● As a Software Engineer in an early-stage startup, I spearheaded development, testing, go-to-market, and after-sales support of web apps and solutions for government and educational institutions.<br><br>
-      ● Developed Full Stack software, managed software deployment to production, and handled database deployments for websites and apps with <strong>5000+ users</strong>. Products were built with <strong>React</strong>, <strong>.NET</strong>, <strong>PHP</strong>, and <strong>Laravel</strong>.<br><br>
-      ● Provided technical support and triaged issues for customers for all the software built.
+      ● Developed Full Stack software, managed software deployment to production, and handled database deployments for websites and apps with <br><span style="padding-right: 1%;"></span><strong>5000+users</strong>. Products were built with <strong>React</strong>, <strong>.NET</strong>, <strong>PHP</strong>, and <strong>Laravel</strong>.<br><br>
+      ● Provided technical support and resolved issues for customers for all the software built.
     `,
   },
 ];
@@ -100,9 +98,9 @@ function appendExperienceCards() {
        
       <h3>
         <img src="${exp.logo}" alt="${exp.alt}" class="company-logo" />
-        ${exp.company}, <span>${exp.position}</span>, ${exp.location} <span style="font-size: 1rem; text-align: right;"><strong>${exp.duration}</strong></span>
+        ${exp.company}, <span>${exp.position}</span>, ${exp.location} <span style="font-size: 0.8rem; text-align: right;"><strong>${exp.duration}</strong></span>
       </h3>
-    
+      <br>
       <p>${exp.description}</p>
     `;
     container.appendChild(card);

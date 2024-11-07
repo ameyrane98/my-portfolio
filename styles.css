@@ -50,11 +50,13 @@ html {
 .sticky_parent {
   position: relative;
   height: 500vh;
+  border: 5px solid yellow;
 }
 .sticky {
   position: sticky;
   top: 0;
   height: 100vh;
+  border: 5px solid blue;
   overflow: hidden;
 }
 .scroll_section {
@@ -67,22 +69,32 @@ html {
   justify-content: space-between;
   width: 200vw;
   padding: 0 5vw;
+  border: 5px solid red;
   will-change: transform;
 }
 
 /* Work Card Styling */
 .work-card {
-  height: 50vh;
+  height: 50vh; /* Adjust based on content */
   width: 100%; /* Full width of the viewport */
+  max-width: 100vw; /* Avoid overflow on small screens */
   padding: 2rem;
   background-color: #ece7e0;
   border-radius: 8px;
+  border: 5px solid green;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-right: 2rem;
+  margin-right: 15rem;
   margin-top: 10rem;
   scroll-snap-align: start;
 }
 
+.work-card h3 {
+  font-size: 1.5rem;
+}
+.work-card p {
+  justify-content: center;
+  text-align: left;
+}
 /* Profile Section */
 
 .profile-photo {
@@ -103,6 +115,7 @@ html {
 
 #workSection {
   background-color: #bdbbb6;
+  height: 150vh;
 }
 #workSection h1 {
   border: 1px solid;
@@ -120,5 +133,81 @@ html {
   }
   50% {
     opacity: 0;
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  .sticky_parent {
+    position: relative;
+    height: 500vh;
+    border: 5px solid yellow;
+  }
+  .sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border: 5px solid blue;
+    overflow: hidden;
+  }
+  .scroll_section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease-out;
+    justify-content: space-between;
+    width: 200vw;
+    padding: 0 5vw;
+    border: 5px solid red;
+    will-change: transform;
+  }
+
+  /* Work Card Styling */
+  .work-card {
+    height: auto; /* Adjust based on content */
+    width: 100%; /* Full width of the viewport */
+    max-width: 100vw; /* Avoid overflow on small screens */
+    padding: 2rem;
+    background-color: #ece7e0;
+    border-radius: 8px;
+    border: 5px solid green;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 2rem;
+    margin-top: 2rem;
+    scroll-snap-align: start;
+  }
+
+  .work-card h3 {
+    font-size: 1rem;
+  }
+  .work-card p {
+    font-size: 0.7rem;
+    justify-content: center;
+    text-align: left;
+  }
+  .work-card {
+    padding: 1rem; /* Reduce padding */
+    margin-top: 10rem;
+    margin-right: 1rem;
+    height: auto; /* Adjust height based on content */
+  }
+
+  #workSection {
+    background-color: #bdbbb6;
+    height: 100vh;
+  }
+
+  .section h1 {
+    font-size: 2rem; /* Reduce heading font size */
+  }
+
+  .navbar a {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  .scroll_section {
+    padding: 0 2vw; /* Adjust padding for smaller screens */
   }
 }
