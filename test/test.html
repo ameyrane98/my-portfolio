@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Page Hybrid Scroll</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <a href="#about">About</a>
+      <a href="#workSection">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="wrapper">
+      <!-- About Section -->
+      <section class="section" id="about">
+        <div class="content">
+          <h1>About Me</h1>
+          <p>
+            Hi, I'm Amey, a developer with experience in software engineering,
+            web development, and automation.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work Section with Horizontal Scroll -->
+      <div class="sticky_parent" id="workSection">
+        <div class="sticky">
+          <div class="scroll_section">
+            <!-- Work cards will be appended here by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <section class="section" id="contact">
+        <div class="content">
+          <h1>Contact Me</h1>
+          <p>
+            If you’d like to get in touch, please reach out through my contact
+            form or email.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
