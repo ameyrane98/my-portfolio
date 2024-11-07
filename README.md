@@ -2,7 +2,8 @@
 
 Welcome to my portfolio project! This website is a showcase of my journey, skills, and the projects I've worked on as a **Software Engineer** specializing in **full-stack development** and **software testing**. Feel free to explore and connect with me!
 
-🔗 **Website**: [Amey Rane's Portfolio](https://ameyrane98.github.io/my-portfolio/)
+🔗 **Website**: [Portfolio](https://ameyrane98.github.io/my-portfolio/)
+🔗 **Linkedin**:[ Link ](https://www.linkedin.com/in/amey-santosh-rane-8b94601b0/)
 
 ---
 
