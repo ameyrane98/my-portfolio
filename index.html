@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js" defer></script>
+    <!-- <script src="https://js.hcaptcha.com/1/api.js" async defer></script> -->
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -57,6 +58,14 @@
           <a href="#contactMeSection" class="btn btn-dark profile-button mt-3"
             >Contact me</a
           >
+          <a
+            href="./static/resume.pdf"
+            target="_blank"
+            class="btn btn-dark profile-button mt-3"
+            style="margin-left: 10px"
+          >
+            View Resume
+          </a>
         </div>
         <img
           src="./static/profile.jpg"
@@ -86,18 +95,129 @@
         </div>
       </section>
 
-      <section class="section" id="contactMeSection">
-        <div class="container text-center">
-          <h1>Know More</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            semper nulla eget libero rhoncus ullamcorper.
-          </p>
+      <section
+        id="contactMeSection"
+        style="display: flex; justify-content: center; padding: 2rem"
+      >
+        <div
+          class="contact-card"
+          style="
+            width: 100%;
+            max-width: 500px;
+            padding: 2.5rem;
+            background: #363333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+          "
+        >
+          <h2 style="text-align: center; color: #ebe5de; margin-bottom: 1.5rem">
+            Contact Me
+          </h2>
+          <form
+            id="contactForm"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            autocomplete="off"
+            style="display: flex; flex-direction: column; gap: 1rem"
+          >
+            <!-- Web3Forms Access Key -->
+            <input
+              type="hidden"
+              name="access_key"
+              value="221c2d23-bfd9-4e0f-9219-e58669a43a5a"
+            />
+
+            <!-- Name Field -->
+            <label for="name" style="font-weight: bold; color: #ebe5de"
+              >Name:</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your Name"
+              style="
+                padding: 0.5rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              "
+            />
+
+            <!-- Email Field -->
+            <label for="email" style="font-weight: bold; color: #ebe5de"
+              >Email:</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Your Email"
+              style="
+                padding: 0.5rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              "
+            />
+
+            <!-- Message Field -->
+            <label for="message" style="font-weight: bold; color: #ebe5de"
+              >Message:</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Your Message"
+              style="
+                padding: 0.5rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              "
+            ></textarea>
+
+            <!-- Anti-Spam Honeypot (hidden) -->
+            <input
+              type="checkbox"
+              name="botcheck"
+              id="botcheck"
+              style="display: none"
+            />
+
+            <!-- Success Message -->
+            <p id="successMessage" style="color: #ebe5de; display: none">
+              Thank you for your message! I will get back to you soon.
+            </p>
+
+            <!-- hCaptcha Widget -->
+            <!-- <div
+              class="h-captcha"
+              data-sitekey="0e0efc54-b876-4512-907c-e8f48c440d7a"
+            ></div> -->
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="submitButton"
+              style="
+                padding: 0.75rem;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              "
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </section>
     </main>
     <!-- JS and dependencie -->
     <script src="scripts.js"></script>
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

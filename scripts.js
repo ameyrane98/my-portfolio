@@ -1,55 +1,6 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const tabs = document.querySelectorAll(".navbar a");
-//   const content = document.getElementById("content");
-
-//   tabs.forEach((tab) => {
-//     tab.addEventListener("click", (event) => {
-//       event.preventDefault();
-
-//       // Remove active class from all tabs
-//       tabs.forEach((t) => t.classList.remove("active"));
-
-//       // Set active class to the clicked tab
-//       tab.classList.add("active");
-
-//       // Update content based on tab clicked
-//       switch (tab.id) {
-//         case "aboutMe":
-//           content.innerHTML = `
-//                         <h1>About Me</h1>
-//                         <p>Welcome to my personal website! This section contains information about me, my experience, and my background.</p>
-//                     `;
-//           break;
-//         case "work":
-//           content.innerHTML = `
-//                         <h1>Work</h1>
-//                         <p>This section contains information about my work experience and professional journey.</p>
-//                     `;
-//           break;
-//         case "projects":
-//           content.innerHTML = `
-//                         <h1>Projects</h1>
-//                         <p>Here you can explore the projects I've worked on, including both personal and professional endeavors.</p>
-//                     `;
-//           break;
-//         case "knowMore":
-//           content.innerHTML = `
-//                         <h1>Know More</h1>
-//                         <p>For more details about my background, hobbies, and interests, feel free to explore this section.</p>
-//                     `;
-//           break;
-//         default:
-//           break;
-//       }
-//     });
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const text =
-    "passionate SDE with 3 years of <b>hands-on experience</b> in <b>full-stack development</b>, specializing in <b>Java</b>, <b>Python</b>, <b>.NET</b>, <b>React</b>, and <b>SQL databases</b> to build <b>robust</b>, <b>scalable solutions</b>.<br><br>Also having expertise in <b> software testing </b>" +
-    "leveraging tools such as <b>Appium, Cucumber, and Selenium</b>  to create automated testing solutions that ensure high reliability and performance." +
-    "<br><br><b>Holding a Master’s in Computer Science</b>, I am committed to delivering <b>high-quality</b>, <b>innovative solutions</b> while continuously improving development and testing processes within the <b>tech industry</b>. I am open to relocation for the right opportunity.";
+    "passionate engineer with <b>hands-on experience</b> in <b>full-stack development</b>, specializing in <b>Java</b>, <b>Python</b>, <b>.NET</b>, <b>React</b>, and <b>SQL</b> to deliver <b>robust</b>, <b>scalable solutions</b>. Skilled in <b>software testing</b> with tools like <b>Appium</b>, <b>Cucumber</b>, and <b>Selenium</b> for <b>high-quality</b>, automated testing. Holding a <b>Master’s in Computer Science</b>, I am committed to <b>innovation</b> and <b>process improvement</b> in the tech industry and am open to <b>relocation</b> for the right opportunity.";
 
   const animatedText = document.getElementById("animatedText");
   let index = 0;
@@ -169,27 +120,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// function transform(section) {
-//   const offsetTop = section.parentElement.offsetTop;
-//   const scrollSection = section.querySelector(".scroll_section");
-
-//   // Calculate total scroll height for the sticky section
-//   const totalScrollableHeight =
-//     section.parentElement.offsetHeight - window.innerHeight;
-
-//   // Calculate the percentage of vertical scroll within the sticky section
-//   let scrollProgress = (window.scrollY - offsetTop) / totalScrollableHeight;
-
-//   // Clamp scrollProgress between 0 and 1
-//   scrollProgress = Math.max(0, Math.min(scrollProgress, 1));
-
-//   // Apply horizontal scroll effect based on scrollProgress
-//   const maxHorizontalScroll = (experiences.length - 1) * 100; // 100vw per card
-//   scrollSection.style.transform = `translate3d(${
-//     -scrollProgress * maxHorizontalScroll
-//   }vw, 0, 0)`;
-// }
-
 function transform(section) {
   const offsetTop = section.parentElement.offsetTop;
   const scrollSection = section.querySelector(".scroll_section");
@@ -210,15 +140,56 @@ function transform(section) {
   }vw, 0, 0)`;
 }
 
-//Adjust height of sticky parent
-// document.addEventListener("DOMContentLoaded", () => {
-//   const scrollSection = document.querySelector(".scroll_section");
-//   const stickyParent = document.querySelector(".sticky_parent");
+// Handle hCaptcha submission before form submission
 
-//   // Calculate height based on number of cards
-//   const cardCount = scrollSection.childElementCount;
-//   const viewportHeight = window.innerHeight;
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    // replace with your actual access key
+    // Prevent the default form submission
 
-//   // Set sticky_parent height to match horizontal scroll length
-//   stickyParent.style.height = `${viewportHeight * cardCount}px`;
-// });
+    const form = event.target;
+    const submitButton = document.getElementById("submitButton");
+    const successMessage = document.getElementById("successMessage");
+
+    // Ensure hCaptcha is completed
+    // const hCaptchaResponse = hcaptcha.getResponse();
+    // if (hCaptchaResponse === "") {
+    //   alert("Please complete the hCaptcha.");
+    //   return;
+    // }
+
+    submitButton.disabled = true; // Disable the submit button to prevent multiple submissions
+    const formData = new FormData(form);
+
+    // Send the form data to Web3Forms
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        // Check if response is okay
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((result) => {
+        if (result.success) {
+          successMessage.style.display = "block"; // Show success message
+          form.reset(); // Reset the form fields
+          // hcaptcha.reset(); // Reset hCaptcha
+        } else {
+          alert("There was a problem submitting your form. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("There was an error submitting the form.");
+      })
+      .finally(() => {
+        submitButton.disabled = false; // Re-enable the submit button
+      });
+  });
