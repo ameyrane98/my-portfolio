@@ -210,6 +210,9 @@ html {
     height: 100vh;
   }
 
+  #about {
+    height: 150vh;
+  }
   .section h1 {
     font-size: 2rem; /* Reduce heading font size */
   }
@@ -220,5 +223,20 @@ html {
 
   .scroll_section {
     padding: 0 2vw; /* Adjust padding for smaller screens */
+  }
+
+  .profile-content {
+    order: 2; /* Move text below image */
+    text-align: center;
+  }
+
+  .profile-photo {
+    order: 1; /* Move image above text */
+    max-width: 100%;
+    margin: 2rem auto 1rem auto; /* Center image with spacing below */
+  }
+  .section {
+    flex-direction: column; /* Stack elements vertically */
+    text-align: center;
   }
 }
