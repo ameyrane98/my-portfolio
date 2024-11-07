@@ -23,7 +23,13 @@ html {
 }
 .navbar a:hover {
   background-color: #232730;
-  color: #ece7e0;
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+}
+.nav-link.active {
+  color: #ffd700 !important; /* Set your desired color here, e.g., gold */
+  background-color: transparent; /* Optional: remove background color if needed */
 }
 
 /* Wrapper and Section Adjustments for Horizontal Scroll */
@@ -116,6 +122,11 @@ html {
 #workSection {
   background-color: #bdbbb6;
   height: 150vh;
+}
+
+#projectsSection {
+  background-color: #bdbbb6;
+  margin-top: 5rem;
 }
 #workSection h1 {
   border: 1px solid;

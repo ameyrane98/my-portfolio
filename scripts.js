@@ -191,3 +191,52 @@ document
         submitButton.disabled = false; // Re-enable the submit button
       });
   });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".navbar .nav-link");
+  const workSection = document.getElementById("workSection");
+
+  function changeActiveLink() {
+    let currentSection = "";
+
+    // Check each section to see if it's in view
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (window.scrollY >= sectionTop - sectionHeight / 3) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    // Special handling for Work section with horizontal scrolling
+    if (workSection) {
+      const workRect = workSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+
+      // Check if the Work section is partially visible horizontally and vertically
+      if (
+        workRect.top < windowHeight &&
+        workRect.bottom >= 0 &&
+        workRect.left < windowWidth &&
+        workRect.right > 0
+      ) {
+        currentSection = "workSection";
+      }
+    }
+
+    // Update active class on navbar links
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(currentSection)) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // Add scroll event listener to trigger active link change on scroll
+  window.addEventListener("scroll", changeActiveLink);
+  window.addEventListener("resize", changeActiveLink);
+});
