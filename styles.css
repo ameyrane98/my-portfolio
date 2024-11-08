@@ -56,13 +56,13 @@ html {
 .sticky_parent {
   position: relative;
   height: 500vh;
-  border: 5px solid yellow;
+  /* border: 5px solid yellow; */
 }
 .sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   overflow: hidden;
 }
 .scroll_section {
@@ -75,7 +75,7 @@ html {
   justify-content: space-between;
   width: 200vw;
   padding: 0 5vw;
-  border: 5px solid red;
+  /* border: 5px solid red; */
   will-change: transform;
 }
 
@@ -85,9 +85,9 @@ html {
   width: 100%; /* Full width of the viewport */
   max-width: 100vw; /* Avoid overflow on small screens */
   padding: 2rem;
-  background-color: #ece7e0;
+  background-color: #f3f2f1;
   border-radius: 8px;
-  border: 5px solid green;
+  /* border: 5px solid green; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-right: 15rem;
   margin-top: 10rem;
@@ -126,11 +126,16 @@ html {
 
 #projectsSection {
   height: auto;
-  margin-top: 5rem;
+  width: auto;
+}
+
+#projectsSection h2 {
+  border-bottom: 1px solid;
 }
 #workSection h1 {
-  border: 1px solid;
+  border-bottom: 1px solid;
 }
+
 /* Responsive Styling for Text Animation */
 #animatedText::after {
   content: "|";
@@ -221,13 +226,13 @@ html {
   .sticky_parent {
     position: relative;
     height: 500vh;
-    border: 5px solid yellow;
+    /* border: 5px solid yellow; */
   }
   .sticky {
     position: sticky;
     top: 0;
     height: 100vh;
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
     overflow: hidden;
   }
   .scroll_section {
@@ -240,7 +245,7 @@ html {
     justify-content: space-between;
     width: 200vw;
     padding: 0 5vw;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     will-change: transform;
   }
 
@@ -252,7 +257,7 @@ html {
     padding: 2rem;
     background-color: #ece7e0;
     border-radius: 8px;
-    border: 5px solid green;
+    /* border: 5px solid green; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-right: 2rem;
     margin-top: 2rem;
