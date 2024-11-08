@@ -1,7 +1,7 @@
 
 
 # 🌟 **Amey Rane's Portfolio** 🌟
-[!Portfolio](https://github.com/ameyrane98/my-portfolio/master/portfolio.png)
+[!Portfolio](portfolio.png)
 
 
 Welcome to my portfolio project! This website is a showcase of my journey, skills, and the projects I've worked on as a **Software Engineer** specializing in **full-stack development** and **software testing**. Feel free to explore and connect with me!
