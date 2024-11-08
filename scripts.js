@@ -265,13 +265,8 @@ fetch(`https://api.github.com/users/${githubUsername}/repos`)
           // Use regex to find the first image URL in the README
           const imageUrlMatch = readmeContent.match(/!\[.*?\]\((.*?)\)/);
           let imageUrl = imageUrlMatch
-            ? imageUrlMatch[1]
-            : "https://via.placeholder.com/300";
-
-          // Convert relative URLs to absolute GitHub URLs
-          if (imageUrl && !imageUrl.startsWith("http")) {
-            imageUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo.name}/${defaultBranch}/${imageUrl}`;
-          }
+            ? `https://raw.githubusercontent.com/${githubUsername}/${repo.name}/${defaultBranch}/${imageUrlMatch[1]}`
+            : "./static/projectDummy.png";
 
           // Create the project card
           const card = document.createElement("div");
@@ -304,7 +299,7 @@ fetch(`https://api.github.com/users/${githubUsername}/repos`)
           card.classList.add("card");
 
           card.innerHTML = `
-            <div class="card-bg" style="background-image: url('https://via.placeholder.com/300'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+            <div class="card-bg" style="background-image:url('./static/projectDummy.png') ; background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
             <div class="card-info">
               <h1>${repo.name}</h1>
               <p>${
