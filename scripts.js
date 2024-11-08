@@ -240,3 +240,156 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", changeActiveLink);
   window.addEventListener("resize", changeActiveLink);
 });
+
+// Getting data from github repo
+const githubUsername = "ameyrane98";
+const projectContainer = document.getElementById("project-cards-container");
+
+// Fetch GitHub repositories
+fetch(`https://api.github.com/users/${githubUsername}/repos`)
+  .then((response) => response.json())
+  .then((repos) => {
+    repos.forEach((repo) => {
+      // Fetch README for each repo to find an image
+      const defaultBranch = repo.default_branch;
+      fetch(
+        `https://api.github.com/repos/${githubUsername}/${repo.name}/readme`,
+        {
+          headers: {
+            Accept: "application/vnd.github.v3.raw", // Get raw content of README
+          },
+        }
+      )
+        .then((readmeResponse) => readmeResponse.text())
+        .then((readmeContent) => {
+          // Use regex to find the first image URL in the README
+          const imageUrlMatch = readmeContent.match(/!\[.*?\]\((.*?)\)/);
+          let imageUrl = imageUrlMatch
+            ? imageUrlMatch[1]
+            : "https://via.placeholder.com/300";
+
+          // Convert relative URLs to absolute GitHub URLs
+          if (imageUrl && !imageUrl.startsWith("http")) {
+            imageUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo.name}/${defaultBranch}/${imageUrl}`;
+          }
+
+          // Create the project card
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          // Populate card content with background image
+          card.innerHTML = `
+            <div class="card-bg" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+            <div class="card-info">
+              <h1>${repo.name}</h1>
+              <p>${
+                repo.description
+                  ? repo.description
+                  : "No description available."
+              }</p>
+            </div>
+          `;
+
+          // Add event listener to open GitHub link on click
+          card.addEventListener("click", () => {
+            window.open(repo.html_url, "_blank");
+          });
+
+          projectContainer.appendChild(card);
+        })
+        .catch((error) => {
+          console.error(`Error fetching README for ${repo.name}:`, error);
+          // Fallback to default placeholder if README fetch fails
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          card.innerHTML = `
+            <div class="card-bg" style="background-image: url('https://via.placeholder.com/300'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+            <div class="card-info">
+              <h1>${repo.name}</h1>
+              <p>${
+                repo.description
+                  ? repo.description
+                  : "No description available."
+              }</p>
+            </div>
+          `;
+
+          card.addEventListener("click", () => {
+            window.open(repo.html_url, "_blank");
+          });
+
+          projectContainer.appendChild(card);
+        });
+    });
+  })
+  .catch((error) => console.error("Error fetching GitHub repos:", error));
+
+Vue.component("card", {
+  template: `
+    <div class="card-wrap"
+      @mousemove="handleMouseMove"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+      ref="card">
+      <div class="card" :style="cardStyle">
+        <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
+        <div class="card-info">
+          <slot name="header"></slot>
+          <slot name="content"></slot>
+        </div>
+      </div>
+    </div>`,
+  mounted() {
+    this.width = this.$refs.card.offsetWidth;
+    this.height = this.$refs.card.offsetHeight;
+  },
+  props: ["dataImage"],
+  data: () => ({
+    width: 0,
+    height: 0,
+    mouseX: 0,
+    mouseY: 0,
+    mouseLeaveDelay: null,
+  }),
+  computed: {
+    mousePX() {
+      return this.mouseX / this.width;
+    },
+    mousePY() {
+      return this.mouseY / this.height;
+    },
+    cardStyle() {
+      const rX = this.mousePX * 30;
+      const rY = this.mousePY * -30;
+      return { transform: `rotateY(${rX}deg) rotateX(${rY}deg)` };
+    },
+    cardBgTransform() {
+      const tX = this.mousePX * -40;
+      const tY = this.mousePY * -40;
+      return { transform: `translateX(${tX}px) translateY(${tY}px)` };
+    },
+    cardBgImage() {
+      return { backgroundImage: `url(${this.dataImage})` };
+    },
+  },
+  methods: {
+    handleMouseMove(e) {
+      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width / 2;
+      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height / 2;
+    },
+    handleMouseEnter() {
+      clearTimeout(this.mouseLeaveDelay);
+    },
+    handleMouseLeave() {
+      this.mouseLeaveDelay = setTimeout(() => {
+        this.mouseX = 0;
+        this.mouseY = 0;
+      }, 1000);
+    },
+  },
+});
+
+const app = new Vue({
+  el: "#app",
+});
