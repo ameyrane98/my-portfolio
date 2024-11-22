@@ -42,4 +42,4 @@ This portfolio was built using:
 - **Interactive Animations**: Engaging animations for a seamless experience.
 - **Secure Contact Form**: Enables secure, spam-free communication through Web3Forms and hCaptcha integration.
 
----
+
