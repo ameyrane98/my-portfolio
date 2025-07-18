@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <script src="https://js.hcaptcha.com/1/api.js" async defer></script> -->
   </head>
   <body>
@@ -29,6 +31,13 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
+        </button>
+        <button
+          id="theme-toggle"
+          class="btn btn-outline-light"
+          style="position: fixed; top: 10px; right: 10px; z-index: 9999"
+        >
+          🌙
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
@@ -54,29 +63,58 @@
       <!-- Horizontal Scroll Wrapper -->
 
       <section class="section" id="about">
-        <div class="profile-content text-center text-md-left">
-          <p>Hello! I am <b>Amey</b>, a <span id="animatedText"></span></p>
-          <a
-            id="contactButton"
-            href="#contactMeSection"
-            class="btn btn-dark profile-button mt-3"
-            >Contact me</a
-          >
-          <a
-            href="./static/resume.pdf"
-            target="_blank"
-            class="btn btn-dark profile-button mt-3"
-            style="margin-left: 10px"
-            id="resumeButton"
-          >
-            View Resume
-          </a>
+        <div class="about-card">
+          <div class="about-info">
+            <!-- Profile + Name + Bio + Buttons + Skills -->
+            <div class="about-photo">
+              <img
+                src="./static/profile.jpg"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+            </div>
+            <div class="about-details">
+              <h2>Amey Rane</h2>
+              <p>
+                Software Engineer passionate about building robust and scalable
+                solutions.<br />
+                Experienced in <b>Java</b>, <b>.NET</b>, <b>Python</b>,
+                <b>React</b>, and <b>cloud technologies</b>.<br />
+                <span style="color: #6c757d; font-size: 0.95em"
+                  >Open to new challenges and continuous learning.</span
+                >
+              </p>
+              <div class="about-actions">
+                <a href="#contactMeSection" class="btn btn-dark profile-button"
+                  >Contact Me</a
+                >
+                <a
+                  href="./static/resume.pdf"
+                  target="_blank"
+                  class="btn btn-dark profile-button"
+                  id="resumeButton"
+                  >View Resume</a
+                >
+              </div>
+              <div class="skill-card">
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">.NET</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">AWS</span>
+                <span class="skill-badge">Selenium</span>
+                <span class="skill-badge">SQL</span>
+                <span class="skill-badge">Appium</span>
+              </div>
+            </div>
+          </div>
+          <div class="leetcode-section">
+            <div class="leetcode-chart">
+              <canvas id="leetcodeProgress"></canvas>
+              <div class="leetcode-label"></div>
+            </div>
+          </div>
         </div>
-        <img
-          src="./static/profile.jpg"
-          alt="Profile Photo"
-          class="profile-photo"
-        />
       </section>
 
       <!-- Work Section with Horizontal Scroll -->

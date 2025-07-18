@@ -1,30 +1,70 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const text =
-    "passionate engineer with <b>hands-on experience</b> in <b>full-stack development</b>, specializing in <b>Java</b>, <b>Python</b>, <b>.NET</b>, <b>React</b>, and <b>SQL</b> to deliver <b>robust</b>, <b>scalable solutions</b>. Skilled in <b>software testing</b> with tools like <b>Appium</b>, <b>Cucumber</b>, and <b>Selenium</b> for <b>high-quality</b>, automated testing. Holding a <b>Master’s in Computer Science</b>, I am committed to <b>innovation</b> and <b>process improvement</b> in the tech industry and am open to <b>relocation</b> for the right opportunity.";
+// toggle dark mode
+// This script toggles between light and dark themes based on user preference or system settings.
+// It uses localStorage to remember the user's choice across sessions.
+const themeToggle = document.getElementById("theme-toggle");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const animatedText = document.getElementById("animatedText");
-  let index = 0;
-  const speed = 50;
+// Initial theme set
+if (localStorage.getItem("theme")) {
+  document.documentElement.setAttribute(
+    "data-theme",
+    localStorage.getItem("theme")
+  );
+  themeToggle.textContent =
+    localStorage.getItem("theme") === "dark" ? "☀️" : "🌙";
+} else if (prefersDark) {
+  document.documentElement.setAttribute("data-theme", "dark");
+  themeToggle.textContent = "☀️";
+  localStorage.setItem("theme", "dark");
+} else {
+  document.documentElement.setAttribute("data-theme", "light");
+  themeToggle.textContent = "🌙";
+  localStorage.setItem("theme", "light");
+}
 
-  function typeText() {
-    if (index < text.length) {
-      if (text.slice(index, index + 4) === "<br>") {
-        animatedText.innerHTML += "<br>";
-        index += 4;
-      } else if (text.slice(index, index + 3) === "<b>") {
-        const endBold = text.indexOf("</b>", index);
-        animatedText.innerHTML += `<b>${text.slice(index + 3, endBold)}</b>`;
-        index = endBold + 4;
-      } else {
-        animatedText.innerHTML += text.charAt(index);
-        index++;
-      }
-      setTimeout(typeText, speed);
-    }
+themeToggle.addEventListener("click", function () {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  if (currentTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "light");
+    themeToggle.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeToggle.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
   }
-
-  typeText();
 });
+
+/** Leet code Script */
+
+// Use this for GitHub Pages (manual, always works)
+const easy = 170,
+  medium = 180,
+  hard = 30,
+  all = 380;
+const ctx = document.getElementById("leetcodeProgress").getContext("2d");
+new Chart(ctx, {
+  type: "doughnut",
+  data: {
+    labels: ["Easy", "Medium", "Hard"],
+    datasets: [
+      {
+        data: [easy, medium, hard],
+        backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
+        borderWidth: 0,
+      },
+    ],
+  },
+  options: {
+    cutout: "75%",
+    plugins: {
+      legend: { display: true, position: "bottom" },
+    },
+    tooltips: { enabled: true },
+  },
+});
+document.querySelector(".leetcode-label").innerHTML = `<span>LeetCode</span><br>
+   <b>${all}</b>`;
 
 /* Work Section*/
 
