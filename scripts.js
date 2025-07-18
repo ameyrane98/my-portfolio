@@ -38,33 +38,49 @@ themeToggle.addEventListener("click", function () {
 /** Leet code Script */
 
 // Use this for GitHub Pages (manual, always works)
-const easy = 170,
-  medium = 180,
-  hard = 30,
-  all = 380;
-const ctx = document.getElementById("leetcodeProgress").getContext("2d");
-new Chart(ctx, {
-  type: "doughnut",
-  data: {
-    labels: ["Easy", "Medium", "Hard"],
-    datasets: [
-      {
-        data: [easy, medium, hard],
-        backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
-        borderWidth: 0,
+async function fetchLeetCodeStats(username) {
+  const apiUrl = "https://my-portfolio-vyzz.onrender.com/leetcode/" + username;
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error("Proxy error");
+    const stats = await res.json();
+    const easy = stats.find((s) => s.difficulty === "Easy")?.count || 0;
+    const medium = stats.find((s) => s.difficulty === "Medium")?.count || 0;
+    const hard = stats.find((s) => s.difficulty === "Hard")?.count || 0;
+    const all = stats.find((s) => s.difficulty === "All")?.count || 0;
+
+    const ctx = document.getElementById("leetcodeProgress").getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Easy", "Medium", "Hard"],
+        datasets: [
+          {
+            data: [easy, medium, hard],
+            backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
+            borderWidth: 0,
+          },
+        ],
       },
-    ],
-  },
-  options: {
-    cutout: "75%",
-    plugins: {
-      legend: { display: true, position: "bottom" },
-    },
-    tooltips: { enabled: true },
-  },
-});
-document.querySelector(".leetcode-label").innerHTML = `<span>LeetCode</span><br>
-   <b>${all}</b>`;
+      options: {
+        cutout: "75%",
+        plugins: {
+          legend: { display: true, position: "bottom" },
+        },
+        tooltips: { enabled: true },
+      },
+    });
+
+    document.querySelector(
+      ".leetcode-label"
+    ).innerHTML = `<span>LeetCode</span><br><b>${all}</b>`;
+  } catch (err) {
+    document.querySelector(".leetcode-label").innerHTML =
+      "<span>LeetCode</span><br><b>Stats unavailable</b>";
+  }
+}
+
+fetchLeetCodeStats("ameyrane98");
 
 /* Work Section*/
 
