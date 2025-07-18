@@ -73,7 +73,7 @@ async function fetchLeetCodeStats(username) {
 
     document.querySelector(
       ".leetcode-label"
-    ).innerHTML = `<span>LeetCode</span><br><b>${all}</b>`;
+    ).innerHTML = `<span>LeetCode</span><br><b>${all} solved</b>`;
   } catch (err) {
     document.querySelector(".leetcode-label").innerHTML =
       "<span>LeetCode</span><br><b>Stats unavailable</b>";
