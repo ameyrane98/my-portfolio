@@ -1,6 +1,3 @@
-// toggle dark mode
-// This script toggles between light and dark themes based on user preference or system settings.
-// It uses localStorage to remember the user's choice across sessions.
 const themeToggle = document.getElementById("theme-toggle");
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
@@ -90,8 +87,8 @@ const experiences = [
     logo: "./static/abbott-logo.png",
     alt: "Abbott Laboratories Logo",
     company: "Abbott Laboratories",
-    position: "Software Engineering Intern",
-    location: "Alameda, CA",
+    position: "Software Engineer in Test",
+    location: "Alameda, CA, USA",
     duration: "MAY 2023 - AUG 2023",
     skills: [
       "Scripting",

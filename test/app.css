@@ -1,5 +1,4 @@
-General Styles
-* {
+General Styles * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,7 +12,11 @@ html {
 
 /* Navigation Bar */
 .navbar {
-  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  position: flex;
   top: 0;
   width: 100%;
   background-color: #333;
@@ -94,4 +97,20 @@ html {
 .work-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+}
+/* Responsive Navbar Fix */
+@media (max-width: 600px) {
+  .navbar .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .navbar-brand {
+    margin-bottom: 0.5rem;
+  }
+  .d-flex.align-items-center {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 }

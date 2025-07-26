@@ -6,7 +6,7 @@
   --navbar-text: #bdbbb6;
   --navbar-hover-bg: #232730;
   --navbar-active: #ffd700;
-  --work-card-bg: #f3f2f1;
+  --work-card-bg: #fff;
   --work-card-text: #232323;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   --card-bg: #333;
@@ -16,8 +16,8 @@
   --profile-bg: #ece7e0;
   --projects-bg: #f3f2f1;
   --projects-text: #232323;
-  --contact-bg: #363333;
-  --contact-text: #ebe5de;
+  --contact-bg: #fff;
+  --contact-text: #232323;
   --input-bg: #fff;
   --input-text: #232323;
   --about-bg: #fff;
@@ -44,7 +44,7 @@
   --card-info-text: #ffd700;
   --card-hover: #ffd700;
   --profile-bg: #232323;
-  --projects-bg: #23272c;
+  --projects-bg: #242628;
   --projects-text: #ffd700;
   --contact-bg: #232323;
   --contact-text: #ffd700;
@@ -307,6 +307,7 @@ body {
 }
 #workSection {
   background-color: var(--work-card-bg);
+  color: var(--projects-text);
   height: 150vh;
 }
 #projectsSection {
@@ -315,9 +316,11 @@ body {
   background: var(--projects-bg);
   color: var(--projects-text);
 }
-#projectsSection h2,
-#workSection h1 {
+#projectsSection h2 {
   border-bottom: 1px solid;
+}
+#workSection h2 {
+  border: 1px solid;
 }
 
 /* Responsive Styling for Text Animation */
@@ -412,7 +415,12 @@ textarea:focus {
   border-color: var(--navbar-active);
   outline: none;
 }
-
+#contactMeSection {
+  height: auto;
+  width: auto;
+  background: var(--projects-bg);
+  color: var(--projects-text);
+}
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   .sticky_parent {
