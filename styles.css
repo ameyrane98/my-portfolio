@@ -451,7 +451,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 900px) {
   .cover-about {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+  .cover-bio {
+    display: none;
+  }
+  .cover-stats {
+    display: none;
   }
 }
 
@@ -643,8 +649,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .photo-frame {
   width:         220px;
-  height:        220px;
-  border-radius: 50%;
+  height:        280px;
+  border-radius: 24px;
   overflow:      hidden;
   border:        3px solid var(--border);
   box-shadow:    0 0 0 6px rgba(198,90,30,.07), 0 20px 50px rgba(0,0,0,.5);
@@ -1047,7 +1053,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .tl-right        { align-items: flex-start; }
 
   .about-photo-col { flex-direction: column; }
-  .photo-frame     { width: 160px; height: 160px; }
+  .photo-frame     { width: 140px; height: 180px; }
 
   .stats-row       { gap: 1.5rem; }
 }
