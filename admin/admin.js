@@ -64,11 +64,29 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
   document.getElementById('loginScreen').hidden = false;
 });
 
+// ─── Navigation ──────────────────────────────────────────────────────────────
+
+function navigateTo(page) {
+  document.querySelectorAll('.page').forEach(s => s.hidden = true);
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+
+  const section = document.getElementById(`page-${page}`);
+  if (section) section.hidden = false;
+
+  const btn = document.querySelector(`.nav-item[data-page="${page}"]`);
+  if (btn) btn.classList.add('active');
+}
+
+document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => navigateTo(btn.dataset.page));
+});
+
 // ─── Dashboard ───────────────────────────────────────────────────────────────
 
 async function showDashboard() {
   document.getElementById('loginScreen').hidden = true;
   document.getElementById('dashboard').hidden   = false;
+  navigateTo('profile');
   await Promise.all([loadSettings(), loadRepos()]);
 }
 
@@ -217,6 +235,7 @@ async function loadRepos() {
     loadingEl.hidden = true;
     listEl.hidden    = false;
     listEl.innerHTML = '';
+    document.getElementById('saveRow').hidden = false;
 
     // Sort alphabetically for the admin list
     repos
