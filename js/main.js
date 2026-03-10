@@ -147,11 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset scroll for the new page
     targetSection.scrollTop = 0;
     
-    // Update Edge Tabs
-    if (pageTabsContainer) {
-      const allTabs = pageTabsContainer.querySelectorAll('.page-tab');
-      allTabs.forEach(tab => tab.classList.remove('active-tab'));
-      if (allTabs[targetIndex]) allTabs[targetIndex].classList.add('active-tab');
+    // Recheck the active section to update Prev/Next button visibility logic if needed
+    // (Optional: Hide Prev on first page, Hide Next on last page)
+    const btnPrevPage = document.getElementById('btnPrevPage');
+    const btnNextPage = document.getElementById('btnNextPage');
+    if(btnPrevPage && btnNextPage) {
+       btnPrevPage.style.display = targetIndex === 0 ? 'none' : 'inline-flex';
+       btnNextPage.style.display = targetIndex === sections.length - 1 ? 'none' : 'inline-flex';
     }
     
     // Open notebook if closed
@@ -178,42 +180,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. SCROLL-TO-TURN LOGIC
-  let isTurningPage = false;
+  // 7. EXPLICIT BUTTON NAVIGATION (Replacing Scroll-to-Turn)
+  const btnPrevPage = document.getElementById('btnPrevPage');
+  const btnNextPage = document.getElementById('btnNextPage');
   
-  sections.forEach((sec, index) => {
-    sec.addEventListener('wheel', (e) => {
-      if (isTurningPage) return; // Debounce
-      
-      // Moving Forward (Scroll Down)
-      if (e.deltaY > 0) {
-        // Check if at the bottom of the section
-        if (Math.ceil(sec.scrollTop + sec.clientHeight) >= sec.scrollHeight) {
-          if (index < sections.length - 1) {
-            isTurningPage = true;
-            navigateToSection(sections[index + 1].id);
-            setTimeout(() => { isTurningPage = false; }, 1200); // 1.2s CSS transition time
-          }
-        }
-      } 
-      // Moving Backward (Scroll Up)
-      else if (e.deltaY < 0) {
-        // Check if at the top of the section
-        if (sec.scrollTop <= 0) {
-          if (index > 0) {
-            isTurningPage = true;
-            navigateToSection(sections[index - 1].id);
-            setTimeout(() => { isTurningPage = false; }, 1200);
-          } else if (notebookCover && notebookCover.classList.contains('open')) {
-            // Close the book if scrolling up on the first page
-             isTurningPage = true;
-             notebookCover.classList.remove('open');
-             setTimeout(() => { isTurningPage = false; }, 1500);
-          }
-        }
+  // Initialize button visibility
+  if (btnPrevPage) btnPrevPage.style.display = 'none'; // Hidden on first page
+
+  if (btnNextPage) {
+    btnNextPage.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentActive = document.querySelector('.section.active-page');
+      let currentIndex = 0;
+      if (currentActive) {
+        currentIndex = Array.from(sections).indexOf(currentActive);
       }
-    }, { passive: true });
-  });
+      
+      if (currentIndex < sections.length - 1) {
+        navigateToSection(sections[currentIndex + 1].id);
+      }
+    });
+  }
+
+  if (btnPrevPage) {
+    btnPrevPage.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentActive = document.querySelector('.section.active-page');
+      let currentIndex = 0;
+      if (currentActive) {
+        currentIndex = Array.from(sections).indexOf(currentActive);
+      }
+      
+      if (currentIndex > 0) {
+        navigateToSection(sections[currentIndex - 1].id);
+      }
+    });
+  }
 
   // 8. SCROLL REVEAL ANIMATIONS (Intersection Observer)
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');

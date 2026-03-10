@@ -102,13 +102,18 @@
       <!-- Notebook Body (Pages inside the book) -->
       <div class="notebook-body">
         
-        <!-- ═══ PAGE TABS (Edge Navigation) ═══ -->
-        <div class="page-tabs" id="pageTabs">
-          <!-- Populated by JS -->
-        </div>
-
         <!-- ═══ BOOK CONTAINER ═══ -->
         <div id="book-container" class="book-container">
+
+          <!-- Global Page Navigation Buttons -->
+          <div class="page-nav-btns">
+            <button id="btnPrevPage" class="btn btn-ghost" style="border:1px solid var(--orange); color:var(--orange);" aria-label="Previous Page">
+              <span class="nav-icon">←</span> Prev
+            </button>
+            <button id="btnNextPage" class="btn btn-primary" aria-label="Next Page">
+              Next <span class="nav-icon">→</span>
+            </button>
+          </div>
 
   <!-- ═══ EXPERIENCE ═══ -->
   <section id="experience" class="section active-page">
