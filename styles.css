@@ -1016,7 +1016,11 @@ body.dark-roast .page-nav-btns {
   .photo-frame { width: 140px; height: 140px; flex-shrink: 0; }
 
   .contact-grid { grid-template-columns: 1fr; }
-  .contact-aside { border-top: 1px solid var(--border-dim); padding-top: 2rem; }
+  .contact-aside { 
+    order: -1; 
+    border-bottom: 1px solid var(--border-dim); 
+    padding-bottom: 2rem; 
+  }
   .socials { flex-direction: row; flex-wrap: wrap; }
 }
 
