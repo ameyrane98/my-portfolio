@@ -190,7 +190,7 @@ async function loadRepos() {
 
   try {
     const [reposRes, settingsRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
+      fetch('/api/admin/repos', { headers: authHeaders() }),
       fetch('/api/admin/settings'),
     ]);
 
