@@ -1,3 +1,5 @@
+import { getSettings } from './settings.js';
+
 const GITHUB_USER  = 'ameyrane98';
 const DUMMY_IMAGE  = './static/projectDummy.png';
 const MAX_PROJECTS = 12;
@@ -7,13 +9,19 @@ export async function fetchProjects() {
   if (!grid) return;
 
   try {
-    const res   = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-    const repos = await res.json();
+    const [reposRes, settings] = await Promise.all([
+      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
+      getSettings(),
+    ]);
+    const repos = await reposRes.json();
 
     if (!Array.isArray(repos)) throw new Error('Bad response');
 
-    // Show top repos by stars, limit to MAX_PROJECTS
+    const hidden = new Set(settings.hiddenRepos || []);
+
+    // Filter hidden, sort by stars, limit to MAX_PROJECTS
     const sorted = [...repos]
+      .filter(r => !hidden.has(r.name))
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
       .slice(0, MAX_PROJECTS);
 
