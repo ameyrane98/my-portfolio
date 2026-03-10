@@ -191,6 +191,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 6.6 LOGO CLICK -> Go to Cover
+  const logoLink = document.querySelector('.nav-logo a');
+  if (logoLink) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (notebookCover) notebookCover.classList.remove('open');
+      history.pushState(null, null, '/'); 
+    });
+  }
+
   // 7. EXPLICIT BUTTON NAVIGATION (Replacing Scroll-to-Turn)
   const btnPrevPage = document.getElementById('btnPrevPage');
   const btnNextPage = document.getElementById('btnNextPage');
