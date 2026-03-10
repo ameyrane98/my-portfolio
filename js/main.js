@@ -164,6 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
     history.pushState(null, null, `#${targetId}`);
   }
 
+  // 6.5 CLOSE BOOK BUTTONS
+  const closeBookBtns = document.querySelectorAll('.btn-close-book');
+  closeBookBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (notebookCover) {
+        notebookCover.classList.remove('open');
+      }
+    });
+  });
+
   // Attach Top Navbar Links to Central Nav Logic
   navLinksList.forEach(link => {
     link.addEventListener('click', (e) => {
