@@ -1040,20 +1040,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 @media (max-width: 600px) {
-  .notebook-body   { padding: 1.5rem; }
-  .notebook-inner  { padding: 1.5rem; }
-  .nb-name         { font-size: 2.4rem; }
+  .section         { padding: 2.5rem 1.5rem 5rem; }
+  .notebook-cover  { padding: 1rem; }
+  .notebook-inner  { padding: 1.25rem; }
+  
+  .nb-name         { font-size: 2.2rem; }
+  .cover-name      { font-size: 2rem; }
   .nb-actions      { flex-direction: column; }
   .btn             { justify-content: center; }
 
-  .timeline        { padding-left: 1.5rem; }
-  .tl-item         { padding-left: 1.5rem; }
-  .tl-dot          { left: -1.95rem; }
-  .tl-head         { flex-direction: column; }
+  .lc-card         { padding: .85rem; }
+  .lc-total        { font-size: 1.6rem; }
+
+  .timeline        { padding-left: 0; margin-top: 2rem; }
+  .timeline::before{ display: none; }
+  .tl-item         { padding-left: 0; margin-bottom: 1.5rem; }
+  .tl-dot          { display: none; }
+  .tl-card         { padding: 1.25rem; }
+  .tl-head         { flex-direction: column; gap: .5rem; }
   .tl-right        { align-items: flex-start; }
 
-  .about-photo-col { flex-direction: column; }
-  .photo-frame     { width: 140px; height: 180px; }
+  .about-photo-col { flex-direction: column; gap: 1.25rem; }
+  .photo-frame     { width: 130px; height: 160px; margin: 0 auto; }
 
   .stats-row       { gap: 1.5rem; }
 }
