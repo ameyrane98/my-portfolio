@@ -228,7 +228,9 @@ body {
 }
 
 /* ── Per-page sections ── */
-.page { display: flex; flex-direction: column; gap: 1.5rem; }
+/* [hidden] must be explicit — `.page { display:flex }` overrides the UA stylesheet */
+.page         { display: flex; flex-direction: column; gap: 1.5rem; }
+.page[hidden] { display: none; }
 
 .page-header { display: flex; flex-direction: column; gap: .25rem; }
 

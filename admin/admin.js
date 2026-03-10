@@ -132,7 +132,10 @@ async function uploadFile(file, filename) {
     headers: { 'Content-Type': file.type, ...authHeaders() },
     body:    file,
   });
-  if (!res.ok) throw new Error('Upload failed');
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || `Upload failed (${res.status})`);
+  }
   const data = await res.json();
   return data.url;
 }
