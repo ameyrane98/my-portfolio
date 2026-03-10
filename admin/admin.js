@@ -11,13 +11,28 @@ function authHeaders() {
 }
 
 async function login(password) {
-  const res = await fetch('/api/admin/auth', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ password }),
-  });
-  if (!res.ok) throw new Error('Invalid password');
-  sessionStorage.setItem('adminPassword', password);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+  try {
+    const res = await fetch('/api/admin/auth', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ password }),
+      signal:  controller.signal,
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || `Server error ${res.status}`);
+    }
+    sessionStorage.setItem('adminPassword', password);
+  } catch (err) {
+    clearTimeout(timer);
+    if (err.name === 'AbortError') throw new Error('Request timed out — check Vercel deployment logs.');
+    throw err;
+  }
 }
 
 // ─── Login screen ────────────────────────────────────────────────────────────
@@ -35,10 +50,11 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   try {
     await login(password);
     showDashboard();
-  } catch {
-    errEl.hidden    = false;
-    btn.disabled    = false;
-    btn.textContent = 'Sign In';
+  } catch (err) {
+    errEl.textContent = err.message || 'Sign in failed.';
+    errEl.hidden      = false;
+    btn.disabled      = false;
+    btn.textContent   = 'Sign In';
   }
 });
 
