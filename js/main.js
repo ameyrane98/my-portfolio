@@ -282,25 +282,46 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const submitBtn = document.getElementById('submitBtn');
       const originalText = submitBtn.textContent;
+
+      const LIMIT = 2;
+      const submissions = parseInt(localStorage.getItem('cf_count') || '0', 10);
+      if (submissions >= LIMIT) {
+        formStatus.textContent = 'You\'ve already sent a message. Reach me directly at ameyrane0312@gmail.com.';
+        formStatus.className = 'form-status error';
+        formStatus.removeAttribute('hidden');
+        return;
+      }
       
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
 
-      // Simulate network request
-      setTimeout(() => {
-        contactForm.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        formStatus.textContent = "Message sent successfully! I'll be in touch.";
-        formStatus.className = "form-status ok";
-        formStatus.removeAttribute('hidden');
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          formStatus.setAttribute('hidden', '');
-        }, 5000);
-      }, 1200);
+      const formData = new FormData(contactForm);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            contactForm.reset();
+            localStorage.setItem('cf_count', submissions + 1);
+            formStatus.textContent = "Message sent successfully! I'll be in touch.";
+            formStatus.className = "form-status ok";
+          } else {
+            formStatus.textContent = "Something went wrong. Please try again or email me directly.";
+            formStatus.className = "form-status error";
+          }
+        })
+        .catch(() => {
+          formStatus.textContent = "Network error. Please try again or email me directly.";
+          formStatus.className = "form-status error";
+        })
+        .finally(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          formStatus.removeAttribute('hidden');
+          setTimeout(() => formStatus.setAttribute('hidden', ''), 5000);
+        });
     });
   }
 });

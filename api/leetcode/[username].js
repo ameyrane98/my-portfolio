@@ -3,9 +3,10 @@
 
 export default async function handler(req, res) {
   const { username } = req.query;
+  const ALLOWED = ['ameyrane98'];
 
-  if (!username) {
-    return res.status(400).json({ error: 'Username is required' });
+  if (!username || !ALLOWED.includes(username)) {
+    return res.status(403).json({ error: 'Forbidden' });
   }
 
   const query = {
